@@ -23,20 +23,20 @@
       </div>
       <i class="fa-solid fa-person-snowboarding"></i>
     </div>
-    <div class="mobile-menu">
-      <i class="fa-solid fa-bars"></i>
-    </div>
+    <button type="button" class="mobile-menu" aria-label="Menu" aria-expanded="false">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
   </div>
   <header>
     <div class="main-header">
-      <h1 class="header-title">
+      <div class="header-title">
         <div class="header-title-wrapper">
           <span class="title-icon">
             <i class="fa-solid fa-person-snowboarding"></i>
           </span>
           <span class="title-text"><span class="title-capital">L</span><span class="title-capital-b">u</span><span class="title-capital-c">c</span>as Snow's Adventure!</span>
         </div>
-      </h1>
+      </div>
       <div class="links-wrapper">
         <div class="phone-number">
           <span class="icon">
@@ -50,18 +50,18 @@
           </span>
           <a href="#">Contact Us</a>
         </div>
-        <div class="search-panel">
+        <button type="button" class="search-panel">
           <span class="icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
           </span>
-          <div class="text">Search</div>
-        </div>
+          <span class="text">Search</span>
+        </button>
       </div>
-      <nav>
+      <nav aria-label="Main">
         <ul>
             <li><a href="../index.html" class="nav-link">Home</a></li>
             <li><a href="../pages/about.html" class="nav-link">About</a></li>
-            <li><a href="#" class="nav-link active">Contact</a></li>
+            <li><a href="#" class="nav-link active" aria-current="page">Contact</a></li>
             <li><a href="../pages/trips.html" class="nav-link">Trips</a></li>
             
         </ul>
@@ -69,10 +69,11 @@
     </div> 
   </header>
 
+  <main>
   <section class="Contact">
     <div class="contact-container">
       <div class="text-wrapper">
-        <h2 class="section-title">Get in Touch</h2>
+        <h1 class="section-title">Get in Touch</h1>
         <p class="section-text">Have questions or want to join me on my next snowboarding adventure? Fill out the form and I’ll get back to you!</p>     
       </div>
       <div class="contact-form-wrapper">
@@ -83,16 +84,16 @@
         </div>
         <form class="contact-form" action="#" method="POST">
           <label class="contact-label" for="name">Name:</label>
-          <input class="contact-input" type="text" id="name" name="name" aria-label="name" placeholder="John Wick">
+          <input class="contact-input" type="text" id="name" name="name" placeholder="John Wick">
   
           <label class="contact-label" for="email">Email:</label>
-          <input class="contact-input" type="email" id="email" name="email" aria-label="email" placeholder="johnwick@baba.yaga">
+          <input class="contact-input" type="email" id="email" name="email" placeholder="johnwick@baba.yaga">
 
           <label class="contact-label" for="phone">Phone:</label>
-          <input class="contact-input" type="tel" id="phone" name="phone" aria-label="phone" placeholder="(777) 777-7777">
+          <input class="contact-input" type="tel" id="phone" name="phone" placeholder="(777) 777-7777">
   
           <label class="contact-label" for="message">Your Message:</label>
-          <textarea class="contact-textarea" id="message" name="message" aria-label="message" rows="5" placeholder="..."></textarea>
+          <textarea class="contact-textarea" id="message" name="message" rows="5" placeholder="..."></textarea>
   
           <input class="contact-button" type="submit" value="Send">
       </form>
@@ -203,10 +204,11 @@
       <li></li>
     </ul>
   </section>
+  </main>
 
   <footer>
     <div class="footer-wrapper">
-      <h1 class="header-title">
+      <div class="header-title">
         <span class="title-icon">
           <i class="fa-solid fa-person-snowboarding"></i>
         </span>
@@ -215,8 +217,8 @@
           <span>Snow's</span>
           <span>Adventure!</span>
         </div>
-      </h1>
-      <nav>
+      </div>
+      <nav aria-label="Footer">
         <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="../pages/about.html">About</a></li>
@@ -237,22 +239,22 @@
           </span>
           <a href="#">Contact Us</a>
         </div>
-        <div class="search-panel">
+        <button type="button" class="search-panel">
           <span class="icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
           </span>
-          <div class="text">Search</div>
-        </div>
+          <span class="text">Search</span>
+        </button>
       </div>
     </div>
     <p class="copyright">&copy; 2024 Lucas Snow's Adventures. All rights reserved.</p>
   </footer>
   <form action="#" class="search-popup">
-    <div class="search-popup-close">
-      <i class="fa-solid fa-x"></i>
-    </div>
-    <h3 class="search-popup-title">Explore & Discover</h3>
-    <input class="search-popup-input" type="text" placeholder="Search">
+    <button type="button" class="search-popup-close" aria-label="Close search">
+      <i class="fa-solid fa-x" aria-hidden="true"></i>
+    </button>
+    <h2 class="search-popup-title">Explore & Discover</h2>
+    <input class="search-popup-input" type="text" placeholder="Search" aria-label="Search">
   </form>
   <div class="hover-popup"></div>
   <script src="https://kit.fontawesome.com/3abb6957ff.js" crossorigin="anonymous"></script>

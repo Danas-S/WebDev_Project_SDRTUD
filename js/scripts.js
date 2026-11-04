@@ -53,27 +53,42 @@ document.addEventListener('DOMContentLoaded', () => {
         return input;
     }
     //Event Listeners
-    searchPanelHeader.addEventListener('click', e => {
+    //Search popup: focus moves into the popup when it opens, and back to
+    //the button that opened it when it closes (close button or Escape)
+    const searchPopupInput = searchPopup.querySelector('.search-popup-input');
+    let searchOpener = null;
+    function openSearch(opener) {
+        searchOpener = opener;
         searchPopup.classList.add(show);
         document.body.classList.add(popupOpened);
-    });
-    searchPanelFooter.addEventListener('click', e => {
-        searchPopup.classList.add(show);
-        document.body.classList.add(popupOpened);
-    });
-    searchPopupClose.addEventListener('click', e => {
+        searchPopupInput.focus();
+    }
+    function closeSearch() {
         searchPopup.classList.remove(show);
         document.body.classList.remove(popupOpened);
+        if (searchOpener) {
+            searchOpener.focus();
+        }
+    }
+    searchPanelHeader.addEventListener('click', () => openSearch(searchPanelHeader));
+    searchPanelFooter.addEventListener('click', () => openSearch(searchPanelFooter));
+    searchPopupClose.addEventListener('click', closeSearch);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && searchPopup.classList.contains(show)) {
+            closeSearch();
+        }
     });
     mobileMenu.addEventListener('click', e => {
         if(header.classList.contains(show)) {
             header.classList.remove(show);
             hoverPopup.classList.remove(show);
             document.body.classList.remove(popupOpened);
+            mobileMenu.setAttribute('aria-expanded', 'false');
         } else {
             header.classList.add(show);
             hoverPopup.classList.add(show);
             document.body.classList.add(popupOpened);
+            mobileMenu.setAttribute('aria-expanded', 'true');
         }
     });
     hoverPopup.addEventListener('click', e => {
@@ -82,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         hoverPopup.classList.remove(show);
         document.body.classList.remove(popupOpened);
+        mobileMenu.setAttribute('aria-expanded', 'false');
     });
 
     if(document.title.includes("Contact")) {

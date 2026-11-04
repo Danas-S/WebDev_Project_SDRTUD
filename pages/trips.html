@@ -23,20 +23,20 @@
       </div>
       <i class="fa-solid fa-person-snowboarding"></i>
     </div>
-    <div class="mobile-menu">
-      <i class="fa-solid fa-bars"></i>
-    </div>
+    <button type="button" class="mobile-menu" aria-label="Menu" aria-expanded="false">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
   </div>
   <header>
     <div class="main-header">
-      <h1 class="header-title">
+      <div class="header-title">
         <div class="header-title-wrapper">
           <span class="title-icon">
             <i class="fa-solid fa-person-snowboarding"></i>
           </span>
           <span class="title-text"><span class="title-capital">L</span><span class="title-capital-b">u</span><span class="title-capital-c">c</span>as Snow's Adventure!</span>
         </div>
-      </h1>
+      </div>
       <div class="links-wrapper">
         <div class="phone-number">
           <span class="icon">
@@ -50,27 +50,28 @@
           </span>
           <a href="../pages/contact.html">Contact Us</a>
         </div>
-        <div class="search-panel">
+        <button type="button" class="search-panel">
           <span class="icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
           </span>
-          <div class="text">Search</div>
-        </div>
+          <span class="text">Search</span>
+        </button>
       </div>
-      <nav>
+      <nav aria-label="Main">
         <ul>
             <li><a href="../index.html" class="nav-link">Home</a></li>
             <li><a href="../pages/about.html" class="nav-link">About</a></li>
             <li><a href="../pages/contact.html" class="nav-link">Contact</a></li>
-            <li><a href="#" class="nav-link active">Trips</a></li>
+            <li><a href="#" class="nav-link active" aria-current="page">Trips</a></li>
         </ul>
       </nav>
     </div> 
   </header>
   <!-- Section -->
+  <main>
   <section class="Trips">
     <div class="trips-container">
-      <h2 class="section-title">Trips we offer</h2>
+      <h1 class="section-title">Trips we offer</h1>
       <div class="trip-container">
         <!-- Whistler Blackcomb -->
         <a href="https://en.wikipedia.org/wiki/Whistler_Blackcomb" target="_blank" class="trip-card">
@@ -308,9 +309,10 @@
       <li></li>
     </ul>
   </section>
+  </main>
   <footer>
     <div class="footer-wrapper">
-      <h1 class="header-title">
+      <div class="header-title">
         <span class="title-icon">
           <i class="fa-solid fa-person-snowboarding"></i>
         </span>
@@ -319,8 +321,8 @@
           <span>Snow's</span>
           <span>Adventure!</span>
         </div>
-      </h1>
-      <nav>
+      </div>
+      <nav aria-label="Footer">
         <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="#">About</a></li>
@@ -341,22 +343,22 @@
           </span>
           <a href="../pages/contact.html">Contact Us</a>
         </div>
-        <div class="search-panel">
+        <button type="button" class="search-panel">
           <span class="icon">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
           </span>
-          <div class="text">Search</div>
-        </div>
+          <span class="text">Search</span>
+        </button>
       </div>
     </div>
     <p class="copyright">&copy; 2024 Lucas Snow's Adventures. All rights reserved.</p>
   </footer>
   <form action="#" class="search-popup">
-    <div class="search-popup-close">
-      <i class="fa-solid fa-x"></i>
-    </div>
-    <h3 class="search-popup-title">Explore & Discover</h3>
-    <input class="search-popup-input" type="text" placeholder="Search">
+    <button type="button" class="search-popup-close" aria-label="Close search">
+      <i class="fa-solid fa-x" aria-hidden="true"></i>
+    </button>
+    <h2 class="search-popup-title">Explore & Discover</h2>
+    <input class="search-popup-input" type="text" placeholder="Search" aria-label="Search">
   </form>
   <div class="hover-popup"></div>
   <script src="https://kit.fontawesome.com/3abb6957ff.js" crossorigin="anonymous"></script>

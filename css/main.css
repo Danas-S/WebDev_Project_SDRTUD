@@ -16,6 +16,19 @@ body {
 body.popup-opened {
   overflow-y: hidden;
 }
+/* The menu, search and close controls are buttons: clear the browser's
+   default button styles so they look the same as before */
+:where(.mobile-menu, .search-panel, .search-popup-close) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  cursor: pointer;
+}
 .hover-popup {
   display: none;
   content: '';
@@ -91,6 +104,7 @@ header {
 }
 .main-header .header-title,
 footer .header-title {
+  font-weight: bold; /* keeps the weight these titles had as h1 headings */
   min-width: 40%;
   width: 40%;
   margin: 0;
@@ -286,7 +300,8 @@ footer nav ul {
   flex-direction: column;
 }
 footer nav ul li,
-footer .links-wrapper > div {
+footer .links-wrapper > div,
+footer .links-wrapper > .search-panel {
   margin: 7px 0;
 }
 footer nav ul li > a {
@@ -328,6 +343,10 @@ footer .links-wrapper {
   font-size: 25px;
   outline: none;
   padding: 10px 20px;
+}
+.search-popup .search-popup-input:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
 }
 .search-popup .search-popup-close {
   position: absolute;
@@ -422,7 +441,8 @@ footer .links-wrapper {
     width: 100%;
     flex-wrap: wrap;
   }
-  .main-header .links-wrapper > div {
+  .main-header .links-wrapper > div,
+  .main-header .links-wrapper > .search-panel {
     margin: 10px 15px;
   }
   .main-header nav {
