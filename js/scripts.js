@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Contact form
     let contactForm = null;
     let contactFormError = null;
+    let contactFormSuccess = null;
     //Contact Inputs
     let contactNameInput = null;
     let contactEmailInput = null;
@@ -32,25 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const show = 'show';
     const popupOpened = 'popup-opened';
     
-    //Form serialize
-    function serializeFormData(form) {
-        const formData = new FormData(form);
-        const serializedData = {};
-        for (const [name, value] of formData) {
-            serializedData[name] = value;
-        }
-        return serializedData;
-    }
-    //Number formatting
+    //Number formatting: returns (###) ###-#### from the digits typed so far
     function phoneFormat(input) {
-        input = input.replace(/\D/g,'');
-        const size = input.length;
-        if (size>0) {input="("+input}
-        if (size>3) {input=input.slice(0,4)+") "+input.slice(4,11)}
-        if (size>6) {input=input.slice(0,9)+"-" +input.slice(9)}
-        if (size===10) {input = input.slice(0,13)}
-        //returns (###) ###-####
-        return input;
+        const digits = input.replace(/\D/g, '');
+        if (digits.length > 6) return '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6);
+        if (digits.length > 3) return '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+        if (digits.length > 0) return '(' + digits;
+        return '';
     }
     //Event Listeners
     //Search popup: focus moves into the popup when it opens, and back to
@@ -101,18 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if(document.title.includes("Contact")) {
-        const nameRegex = /^([a-zA-Zà-úÀ-Ú]{2,})+\s+([a-zA-Zà-úÀ-Ú\s]{2,})+$/;
-        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/; 
+        //Full name: at least two words, each starting with a letter from any language
+        //(also allows apostrophes, hyphens and full stops, e.g. O'Brien, Mary-Kate)
+        const nameRegex = /^\p{L}[\p{L}\p{M}'’.-]*(?:\s+\p{L}[\p{L}\p{M}'’.-]*)+$/u;
+        const emailRegex = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)*\.[^\s@.]{2,}$/;
         const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
-        contactPhoneInput.addEventListener('keydown', e => {
-            const phone = e.target.value;
-            contactPhoneInput.value = phoneFormat(phone);
+        contactPhoneInput.addEventListener('input', () => {
+            contactPhoneInput.value = phoneFormat(contactPhoneInput.value);
         });
         formSubmitButton.addEventListener('click', e => {
             e.preventDefault();
-            const nameStatus = nameRegex.test(contactNameInput.value);
-            const emailStatus = emailRegex.test(contactEmailInput.value);
+            const nameStatus = nameRegex.test(contactNameInput.value.trim());
+            const emailStatus = emailRegex.test(contactEmailInput.value.trim());
             const phoneStatus = phoneRegex.test(contactPhoneInput.value);
+            const messageStatus = contactMessageInput.value.trim() !== '';
             //Clear Form error field
             contactFormError.textContent = "";
             if (!nameStatus) {
@@ -124,11 +115,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!phoneStatus) {
                 contactFormError.innerHTML += "<span>Error: Enter your phone.</span></br>";
             } 
-            if(nameStatus && emailStatus && phoneStatus){
-                const formData = serializeFormData(contactForm);
+            if (!messageStatus) {
+                contactFormError.innerHTML += "<span>Error: Enter your message.</span></br>";
+            }
+            if(nameStatus && emailStatus && phoneStatus && messageStatus){
                 contactForm.classList.add("hide");
                 contactFormSuccess.classList.add("show");
-                console.log("form: ", formData);
+                contactFormSuccess.focus();
             }
         });
     }
