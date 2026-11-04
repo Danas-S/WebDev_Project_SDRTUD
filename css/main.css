@@ -42,9 +42,6 @@ body.popup-opened {
   background-color: #fff;
   z-index: 4;
 }
-.mobile-header.hide {
-  z-index: 1;
-}
 .mobile-header .mobile-logo {
   position: relative;
   margin-left: 10px;
@@ -179,86 +176,6 @@ header nav > ul li .nav-link {
 }
 header nav > ul li .nav-link:first-child {
   padding-left: 0;
-}
-/* Mountain Jew */
-.discount-button {
-  width: fit-content;
-  padding: 10px;
-  max-width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  font-size: 14px;
-  background-color: #000;
-  color:#fff;
-  box-shadow: 0 0 5px #000;
-  text-align: center;
-  overflow-wrap: break-word;
-  transition: 0.2s;
-  position: fixed;
-  bottom: 3%;
-  right: 2%;
-  cursor: pointer;
-  z-index: 2;
-  animation: DiscountButtonShowUp 1s;
-}
-.discount-button:hover {
-  opacity: 0.8;
-}
-@keyframes DiscountButtonShowUp {
-  0% {
-    bottom: -15%;
-    right: 2%;
-  } 
-  100% {
-    bottom: 3%;
-    right: 2%;
-  }
-}
-.mountain-jew {
-  display: none;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  position: fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  z-index: 9;
-}
-.mountain-jew.show {
-  display: flex;
-}
-.mountain-jew img {
-  padding: 10%;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 25%;
-  animation: JewDancing 2s infinite;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@keyframes JewDancing {
-  0% { 
-    transform: translate(-50%, -50%) rotate(-10deg);
-  } 
-  20% { 
-    transform: translate(-55%, -45%) rotate(10deg);
-  }
-  40% { 
-    transform: translate(-55%, -55%) rotate(-10deg);
-  }
-  60% { 
-    transform: translate(-55%, -55%) rotate(10deg);
-  }
-  80% { 
-    transform: translate(-45%, -55%) rotate(-10deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(-10deg);
-  }
 }
 /* Hover Effect*/
 .main-header .phone-number a:hover,

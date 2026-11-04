@@ -5,12 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchPopup = document.querySelector('.search-popup');
     const searchPopupClose = document.querySelector('.search-popup-close');
     const header = document.querySelector('header');
-    const mobileHeader = document.querySelector('.mobile-header');
     const mobileMenu = document.querySelector('.mobile-menu');
     const hoverPopup = document.querySelector('.hover-popup');
-    const discountOpen = document.querySelector('.discount-button');
-    const mountainJew = document.querySelector('.mountain-jew');
-    const mountainJewAudio = mountainJew.querySelector('audio');
     const formSubmitButton = document.querySelector('.contact-form .contact-button[type=submit]');
     //Contact form
     let contactForm = null;
@@ -34,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //Modifiers
     const show = 'show';
-    const hide = 'hide';
     const popupOpened = 'popup-opened';
     
     //Form serialize
@@ -85,29 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(header.classList.contains(show)) {
             header.classList.remove(show);
         }
-        if(mountainJew.classList.contains(show)) {
-            mountainJew.classList.remove(show);
-            mountainJew.querySelector('audio').pause();
-            mobileHeader.classList.remove(hide);
-        }
         hoverPopup.classList.remove(show);
         document.body.classList.remove(popupOpened);
-    });
-    discountOpen.addEventListener('click', e => {
-        document.body.classList.add(popupOpened);
-        e.target.remove();
-        hoverPopup.classList.add(show);
-        mobileHeader.classList.add(hide);
-        mountainJew.classList.add(show);
-        mountainJewAudio.currentTime = 0;
-        mountainJewAudio.play();
-    });
-    mountainJew.addEventListener('click', e => {
-        document.body.classList.remove(popupOpened);
-        hoverPopup.classList.remove(show);
-        mobileHeader.classList.remove(hide);
-        mountainJew.classList.remove(show);
-        mountainJew.querySelector('audio').pause();
     });
 
     if(document.title.includes("Contact")) {
